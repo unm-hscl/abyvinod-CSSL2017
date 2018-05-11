@@ -76,7 +76,7 @@ for state_dimension=state_dimension_list
     target_set_UB_indx=round((target_set_upper_bounds-repmat(xmin,state_dimension,1))./xinc)+ones(state_dimension,1);
     target_set_LB_DP=x(target_set_LB_indx);
     target_set_UB_DP=x(target_set_UB_indx);
-    if state_dimension<4
+    if state_dimension<4 && run_DP_script == 1
         reachAvoidChainDI_DP
 %             figure(state_dimension*10+1)
 %             clf
@@ -127,7 +127,7 @@ for state_dimension=state_dimension_list
 %     no_of_testing_initial_states=length(indices);
 %     testing_initial_states=x(indices);
 
-    if state_dimension>3 | run_DP_script == 0
+    if state_dimension>3 || run_DP_script == 0
         reshaping_scaling_matrix=1;
         for i=2:state_dimension
             reshaping_scaling_matrix=[reshaping_scaling_matrix,length(x)^(i-1)];

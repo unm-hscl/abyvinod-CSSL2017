@@ -65,7 +65,7 @@ b_inequalities=[-umin*ones(last_time_step,1);
 
 %options=optimoptions('fmincon','Display','iter','PlotFcns',@optimplotfval,'TolFun',1e-2);        
 %options=optimoptions('fmincon','Display','off');%,'TolFun',1e-2); 
-options=optimoptions('fmincon','Display','off');   
+options=optimoptions('fmincon','Display',displayString_fmincon);   
 maxDiff=0;
 safe_set_center=(safe_set_lower_bounds+safe_set_upper_bounds)/2;
 target_set_center=(target_set_lower_bounds+target_set_upper_bounds)/2;
@@ -90,7 +90,7 @@ for testing_initial_state_indx=1:no_of_testing_initial_states
     fun = @(U)-log(RAprob(U,concatenated_state_mean_without_input_initial_state,concatenated_state_sigma,H_matrix_without_initial_state,reachAvoidTubeLB,reachAvoidTubeUB,state_dimension,myeps));
     if usePatternSearch==1
         point_timer_tic_PS=tic;
-        PSoptions = psoptimset('Display','off','CompletePoll','on','PollMethod','GSSPositiveBasisNp1');
+        PSoptions = psoptimset('Display',displayString_fmincon,'CompletePoll','on','PollMethod','GSSPositiveBasisNp1');
         [U_star_PS,RAprob_star_OLF_log_PS] = patternsearch(fun,zeros(input_dimension*last_time_step,1),A_inequalities,b_inequalities,[],[],[],[],[],PSoptions);
         testing_RA_OP_PS(testing_initial_state_indx)=exp(-RAprob_star_OLF_log_PS);
         point_timer_PS(testing_initial_state_indx)=toc(point_timer_tic_PS);

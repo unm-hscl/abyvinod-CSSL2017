@@ -1,9 +1,11 @@
 clear
 close all
 
-%%%%% Implementation of FTBU %%%%%%%%%%%
+%%%%% Implementation of FTBU/PS %%%%%%%%%%%
 usePatternSearch=1;
 useFmincon=1;
+displayString_fmincon = 'off';
+displayString_patternsearch = 'off';
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 disp('Generate Figure 1 (Choose the following options)');
 code_flow_flag = input('1-Compute via the scripts for FTBU and DP | 2-Load the matfile\n');

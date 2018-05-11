@@ -4,7 +4,10 @@ close all
 %%%%% Implementation of FTBU %%%%%%%%%%%
 usePatternSearch=1;
 useFmincon=1;
+displayString_fmincon = 'off';
+displayString_patternsearch = 'iter';
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 disp('Generate Figure 2 (Choose the following options)');
 code_flow_flag = input('1-Compute via the scripts for FTBU and DP | 2-Load the matfile\n');
 if code_flow_flag == 2
